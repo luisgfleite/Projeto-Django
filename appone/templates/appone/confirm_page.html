@@ -16,13 +16,26 @@ input {
     border-radius: 24px;
     text-align: center;
 }
+
+button {
+    border: 0px;
+    color: #fff;
+    width: 5%;
+    transition: transform 0.5s ease-in-out;
+    margin: 10px;
+    padding: 10px;
+}
+
+button:hover {
+    transform: scale(1.2);
+}
     </style>
 </head>
 <body>
     <center>
         <h1>Deseja Deletar a pessoa {{ pessoa.nome }}?</h1>
-        <a style="background-color: green;" href="{% url 'apagar_pessoa' pessoa.id %}?delete_key=KASDJLAKSDJLKASJDLASJDLKAJSKDJALKSJDKLAJ">Sim</a>
-        <a style="background-color: red;" href="{% url 'listar_pessoas' %}">Não</a>
+        <a href="{% url 'apagar_pessoa' pessoa.id %}?delete_key=KASDJLAKSDJLKASJDLASJDLKAJSKDJALKSJDKLAJ"><button style="background-color: green;">Sim</button></a>
+        <a href="{% url 'listar_pessoas' %}"><button style="background-color: red;">Não</button></a>
     </center>
 </body>
 </html>
