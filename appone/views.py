@@ -38,9 +38,11 @@ def atualizar_pessoa(request, pk):
 def apagar_pessoa(request, pk):
     pessoa = Pessoa.objects.get(pk=pk)
     delete_key_get = request.GET.get("delete_key")
+    form = PessoaForm(instance=pessoa)
 
     if delete_key_get is not None:
         if delete_key_get == DELETE_KEY:
             pessoa.delete()
-    
-    return redirect('listar_pessoas')
+            return redirect('listar_pessoas')
+    else:
+        return render(request, 'appone/confirm_page.html', {'pessoa': pessoa})
